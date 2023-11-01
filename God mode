@@ -1,0 +1,49 @@
+import numpy as np
+##Función primo
+def primo (x):
+  for n in range (2,x):
+    if (x%n)==0:
+      return False
+  return True
+
+##funcion multiplo igual a posición
+def m(lista):
+  lis=[]
+  for i in lista:
+      x = [int(a) for a in str(i)]
+      result1 = np.prod(x)
+      if result1 == lista.index(i):
+        lis.append(i)
+  return (lis)
+
+
+def girar(i):
+  x = [int(a) for a in str(i)]
+  a=x[::-1]
+  s=''
+  for n in a:
+    s=s+str(n)
+  return (int(s))
+
+##Función espejo
+def r(lista, primos):
+  resul=[]
+  for i in lista:
+    ne=girar(i)
+    ur=primos.index(ne)
+    ue=girar(ur)
+    if ue==primos.index(i):
+      resul.append(i)
+  return (resul)
+
+
+p=[]
+for n in range (1,1000000):
+  s=primo(n)
+  if s==True:
+    p.append(n)
+
+t=m(p)
+e=r(t,p)
+
+print ("El número de Sheldon: ",e)
