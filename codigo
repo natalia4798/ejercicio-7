@@ -1,0 +1,30 @@
+def f (x):
+  for n in range (2,x):
+    if (x%n)==0:
+      return True
+  return False
+
+def verf(lista) :
+    if(len(lista)<73) :
+      return False
+    else: 
+      lista2=lista[-73:]
+    for i in range(len(lista2)-1) :
+      if ((lista2[i]+1) != (lista2[i+1])) :
+        return False
+    return True
+
+
+v=False
+n=1
+lista=[]
+while v==False:
+  n+=1
+  if f(n)==True:
+    lista.append(n)
+    if len(lista)==73:
+      v=verf(lista)
+    elif len(lista)>73:
+      del lista[0]
+      v=verf(lista)
+print (lista)
